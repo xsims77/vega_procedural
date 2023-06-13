@@ -1,0 +1,21 @@
+# Fichier de configuration du serveur Apache
+
+# Lorsque le client envoie une requête, l'index.php est la ressource à rechercher
+DirectoryIndex index.php
+
+
+# Activation de l'exécution du moteur de réécriture
+RewriteEngine on
+
+
+# Définit l'URL de base pour les réécriture au niveau répertoire
+RewriteBase /
+
+
+# Définit une condition qui devra être satisfaite pour que la réécriture soit effectuée
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+# Définir les règles pour le moteur de réécriture
+RewriteRule ^(.*)$ index.php [L]
