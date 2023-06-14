@@ -2,7 +2,7 @@
 
 
     
-    $env_file = file_exists(__DIR__ . "/../env.local.conf") ? __DIR__ . "/../env.local.conf" : __DIR__ . "/../env.local.conf";
+    $env_file = file_exists(ROOT . "/env.local.conf") ? ROOT . "/env.local.conf" : ROOT . "/env.local.conf";
 
 
 
