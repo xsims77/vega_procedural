@@ -25,4 +25,16 @@
      require __DIR__ . "/../config/bootstrap.php";
 
      
-    //
+    // Chargement du noyau de l'application
+    require SRC . "/kernel.php";
+
+    
+    // Si le client essaie de récupérer la réponse du noyau via autre chose que le terminal
+    if (php_sapi_name() !== "cli") 
+    {
+        //  Soumission de la requête et récupération de la réponse du noyau
+        $response = handleRequest();
+        
+        // Affichage de cette réponse au client
+        echo $response;
+    }

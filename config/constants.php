@@ -23,3 +23,34 @@
  */
 
 const CONFIG = ROOT . "/config"; 
+
+
+
+/**
+ * Cette constante représente le raccouci permettant d'accéder au dossier de "src"
+ */
+
+const SRC = ROOT . "/src"; 
+
+
+
+/**
+ * Cette constante représente le raccouci permettant d'accéder au coeur de Vega
+ */
+
+const VEGA_CORE = ROOT . "/vegaCore"; 
+
+
+
+/**
+ * Cette constante représente le raccouci permettant d'accéder au dossier controller
+ */
+
+ const CONTROLLER = ROOT . "/src/controller"; 
+
+
+
+
+
+
+
