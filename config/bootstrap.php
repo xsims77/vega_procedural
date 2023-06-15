@@ -30,3 +30,7 @@
 
     //Chargement de la configuration session
     require CONFIG . "/session.php";
+
+
+    //Chargement de la configuration monolog
+    require CONFIG . "/monolog.php";

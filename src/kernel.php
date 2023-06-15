@@ -59,7 +59,7 @@ declare(strict_types=1);
 
         // Retour de cette réponse au contrôleur frontal
 
-        return "hello";
+        return $controller_response;
     }
 
     /**
@@ -73,6 +73,7 @@ declare(strict_types=1);
     {
         if ($router_response === null)
         {
+            generateLog(2, "L'url : $_SERVER[REQUEST_URI] n'a pas été trouvée.");
             http_response_code(404);
             return loadHttpKernelResources("notFound");
         }
@@ -89,7 +90,7 @@ declare(strict_types=1);
         }
         
         require CONTROLLER . "/$controller.php";
-        return $action($parameters);
+        return $action();
 
     }
 

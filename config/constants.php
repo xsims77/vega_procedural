@@ -33,7 +33,6 @@ const CONFIG = ROOT . "/config";
 const SRC = ROOT . "/src"; 
 
 
-
 /**
  * Cette constante représente le raccouci permettant d'accéder au coeur de Vega
  */
@@ -41,12 +40,22 @@ const SRC = ROOT . "/src";
 const VEGA_CORE = ROOT . "/vegaCore"; 
 
 
-
 /**
  * Cette constante représente le raccouci permettant d'accéder au dossier controller
  */
+const CONTROLLER = ROOT . "/src/controller"; 
 
- const CONTROLLER = ROOT . "/src/controller"; 
+
+/**
+ * Cette constante représente le raccouci permettant d'accéder au dossier des templates
+ */
+const TEMPLATES = ROOT . "/templates"; 
+
+
+/**
+ * Cette constante représente le raccouci permettant d'accéder au controller abstrait
+ */
+const ABSTRACT_CONTROLLER = ROOT . "/vegaCore/abstractController/abstractController.php"; 
 
 
 
