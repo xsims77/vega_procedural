@@ -2,9 +2,9 @@
 
     get("/", ["testController", "index"]);
 
-    get("/hello", ["testController", "toGreat"]);
+    // get("/hello", ["testController", "toGreat"]);
 
-    get("/users",["userController", "index"]);
+    // get("/users",["userController", "index"]);
     
 
     //test des routes
