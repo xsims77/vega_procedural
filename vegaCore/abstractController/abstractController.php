@@ -29,3 +29,55 @@ declare(strict_types=1);
         }
         return $content;
     }
+
+
+    /**
+     * Cette fonction se charge de vérifier si :
+     * _ Les données ont bien été envoyées au serveur via la méthode POST
+     * _ La protection CSRF est valide
+     * _ Le pot de miel a capturé un robot spameur ou non 
+     *
+     * @param array $dataArray
+     * @return boolean
+     */
+    function isFormSumitted(array $formData) : bool
+    {
+        if ( $_SERVER['REQUEST_METHOD'] === "POST" ) 
+        {
+            if ( isset($_SESSION['csrf_token']) && !empty($_SESSION['csrf_token']) ) 
+            {
+                if ( $_SESSION['csrf_token'] !== $formData['csrf_token'] ) 
+                {
+                    return false;
+                }
+            }
+
+            if ( isset($formData['honey_pot']) ) 
+            {
+                if ( $formData['honey_pot'] !== "" ) 
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Cette fonction génère le jeton de sécurité contre les failles de types CRSF
+     * et le stock en session
+     *
+     * @return string
+     */
+    function crsf_token() : string
+    {
+        $token = bin2hex(random_bytes(30));
+
+        $_SESSION['csrf_token'] = $token;
+
+        return $token;
+    }
