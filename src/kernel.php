@@ -41,9 +41,6 @@ declare(strict_types=1);
 
         }
 
-
-
-
         // Dans le cas contraire,
 
         // Charger les routes dont l'application attend la réception

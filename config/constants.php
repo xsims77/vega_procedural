@@ -3,7 +3,7 @@
 
 /**
  * -------------------------------------------------------------------
- *                          Les raccourcis
+ *                          Les constantes (Raccourci)
  * 
  * Les constantes représentent des raccourcis permettant d'accéder plus rapidement aux dossiers et fichiers * souhaités
  * -----------------------------------------------------------------------
@@ -11,7 +11,7 @@
 
 
 /**
- * Cette constante représente le raccourci permettant d'accéder à la racine de vega
+ * Cette constante représente le raccourci permettant d'accéder à la racine du dossier vega-procédural
  */
 
  define("ROOT", dirname(__DIR__));

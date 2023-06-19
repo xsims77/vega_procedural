@@ -1,6 +1,6 @@
 <?php
 
-    get("/", ["testController", "index"]);
+    get("/", ["visitor/welcome/welcomeController", "index"]);
 
     // get("/hello", ["testController", "toGreat"]);
 

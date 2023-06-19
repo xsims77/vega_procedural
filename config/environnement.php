@@ -1,8 +1,15 @@
 <?php
 
+    /**
+     * --------------------------------------------------------------------------
+     *                          Les varaibles d'environnement
+     * 
+     * --------------------------------------------------------------------------
+     */ 
+
 
     
-    $env_file = file_exists(ROOT . "/env.local.conf") ? ROOT . "/env.local.conf" : ROOT . "/env.local.conf";
+    $env_file = file_exists(ROOT . "/env.local.conf") ? ROOT . "/env.local.conf" : ROOT . "/env.conf";
 
 
 
@@ -12,11 +19,12 @@
 
     if ( isset($_ENV['APP_ENV']) && !empty($_ENV['APP_ENV']))
     {
-        if (($_ENV['APP_ENV'] === "dev") || ($_ENV['APP_ENV'] === "dévelopment")) 
+        if (($_ENV['APP_ENV'] === "dev") || ($_ENV['APP_ENV'] === "development")) 
         {
             error_reporting(E_ALL);
             ini_set("display_errors", 1);
         }
+        
         if (($_ENV['APP_ENV'] === "prod") || ($_ENV['APP_ENV'] === "production")) 
         {
             error_reporting(0);

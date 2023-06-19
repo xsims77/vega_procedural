@@ -1,4 +1,12 @@
 <?php
+    /**
+     * ---------------------------------------------------------------------------
+     *                              Session
+     * ---------------------------------------------------------------------------
+     */         
+
+
+
 
     // Récupérons la durée de vie de la session souhaitée en secondes
     $sessionLifeTime = $_ENV['SESSION_LIFE_TIME'] * 60;

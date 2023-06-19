@@ -21,7 +21,7 @@
 
 
     // Charger et traitements des variables d'environnement
-    require __DIR__ . "/environnement.php";
+    require CONFIG . "/environnement.php";
 
 
     //Chargement de la configuration du système
