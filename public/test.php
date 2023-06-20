@@ -1,16 +1,20 @@
 <?php
 
-$days = [
-    "jour0" =>  "Lundi",
-    "jour1" =>  "Mardi",
-    "jour2" =>  "Mercredi",
-    "jour3" =>  "Jeudi",
-    "jour4" =>  "Vendredi",
-    "jour5" =>  "Samedi",
-    "jour6" =>  "Dimanche"
 
-    ];
 
-    extract($days);
 
-    echo $jour3;
+
+// $days = [
+//     "jour0" =>  "Lundi",
+//     "jour1" =>  "Mardi",
+//     "jour2" =>  "Mercredi",
+//     "jour3" =>  "Jeudi",
+//     "jour4" =>  "Vendredi",
+//     "jour5" =>  "Samedi",
+//     "jour6" =>  "Dimanche"
+
+//     ];
+
+//     extract($days);
+
+//     echo $jour3;

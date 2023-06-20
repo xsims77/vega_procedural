@@ -43,16 +43,21 @@ declare(strict_types=1);
      */
     function isFormSubmitted(array $formData) : bool
     {
+        // Si les données arrivent au serveur via la méthode http : "POST",
         if ( $_SERVER['REQUEST_METHOD'] === "POST" ) 
         {
+            // Protection contre les failles de type CSRF
             if ( isset($_SESSION['csrf_token']) && !empty($_SESSION['csrf_token']) ) 
             {
                 if ( $_SESSION['csrf_token'] !== $formData['csrf_token'] ) 
                 {
+                    unset($_SESSION['csrf_token']);
                     return false;
                 }
             }
+            unset($_SESSION['csrf_token']);
 
+            // Protection contre les spams grâce au pot de miel
             if ( isset($formData['honey_pot']) ) 
             {
                 if ( $formData['honey_pot'] !== "" ) 
@@ -81,4 +86,27 @@ declare(strict_types=1);
         $_SESSION['csrf_token'] = $token;
 
         return $token;
+    }
+
+    /**
+     * Cette fonction affiche les données et termine immédiatement l'exécution du script.
+     *
+     * @param mixed $data
+     * @return void
+     */
+    function dd(mixed $data)
+    {
+        var_dump($data);
+        die();
+    }
+
+    /**
+     * Cette fonction affiche les données.
+     *
+     * @param mixed $data
+     * @return void
+     */
+    function dump(mixed $data)
+    {
+        var_dump($data);
     }

@@ -58,6 +58,12 @@ const TEMPLATES = ROOT . "/templates";
 const ABSTRACT_CONTROLLER = ROOT . "/vegaCore/abstractController/abstractController.php"; 
 
 
+/**
+ * Cette constante représente le raccouci permettant d'accéder au validateur
+ */
+const VALIDATOR = VEGA_CORE . "/validation/validator.php"; 
+
+
 
 
 

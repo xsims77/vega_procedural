@@ -30,7 +30,7 @@
                 </div>
                 <div class="mb-3">
                         <label for="password">Confirmation du mot de passe</label>
-                        <input type="password" name="confimPassword" id="confirmPassword" class="form-control">
+                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control">
                 </div>
                 <div class="mb-3 d-none">
                     <input type="hidden" name="csrf_token" value="<?= csrf_token(); ?>">
