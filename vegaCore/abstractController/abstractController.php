@@ -38,9 +38,10 @@ declare(strict_types=1);
      * _ Le pot de miel a capturé un robot spameur ou non 
      *
      * @param array $dataArray
+     * 
      * @return boolean
      */
-    function isFormSumitted(array $formData) : bool
+    function isFormSubmitted(array $formData) : bool
     {
         if ( $_SERVER['REQUEST_METHOD'] === "POST" ) 
         {
@@ -73,7 +74,7 @@ declare(strict_types=1);
      *
      * @return string
      */
-    function crsf_token() : string
+    function csrf_token() : string
     {
         $token = bin2hex(random_bytes(30));
 

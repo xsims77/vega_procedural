@@ -33,7 +33,7 @@
                         <input type="password" name="confimPassword" id="confirmPassword" class="form-control">
                 </div>
                 <div class="mb-3 d-none">
-                    <input type="hidden" name="crsf_token" value="<?= crsf_token(); ?>">
+                    <input type="hidden" name="csrf_token" value="<?= csrf_token(); ?>">
                 </div>
                 <div class="mb-3 d-none">
                     <input type="hidden" name="honey_pot" value="">

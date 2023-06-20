@@ -7,8 +7,10 @@ require ABSTRACT_CONTROLLER;
     {
 
         // Si les données arrivent au serveur via la méthode http : "POST",
-        if ( isFormSumitted($_POST))
+        if ( isFormSubmitted($_POST))
         {
+
+            die('pause');
             // Protection contre les failles de type CSRF
 
             // Protection contre les spams grâce au ^pot de miel
