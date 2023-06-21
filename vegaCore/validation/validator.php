@@ -76,6 +76,54 @@ declare(strict_types=1);
                             
                         }                        
                     }                    
+                    // Si le nom de la règle de validation est "email" et que son message personnalisé existe 
+                    else if ( ($validationRule === "email") && ($messageKey === "$inputName.email") ) 
+                    {
+                        // Procéder à la validation
+                        // S'il y a des erreurs
+                        if ( _email($formDataArray[$inputName]) ) 
+                        {
+                            // Remplir le tableau des erreurs avec les messages d'erreurs correspondant prévus.
+                            $errors[$inputName][] = $messageValue;
+                            
+                        }                        
+                    }   
+                    // Si le nom de la règle de validation est "unique" et que son message personnalisé existe 
+                    else if ( substr($validationRule, 0 ,6) === "unique" && ($messageKey === "$inputName.unique") ) 
+                    {
+                        // Procéder à la validation
+                        // S'il y a des erreurs
+                        if ( _unique($formDataArray[$inputName], $validationRule) ) 
+                        {
+                            // Remplir le tableau des erreurs avec les messages d'erreurs correspondant prévus.
+                            $errors[$inputName][] = $messageValue;
+                            
+                        }                        
+                    }                           
+                    // Si le nom de la règle de validation est "regex" et que son message personnalisé existe 
+                    else if ( substr($validationRule, 0 ,5) === "regex" && ($messageKey === "$inputName.regex") ) 
+                    {
+                        // Procéder à la validation
+                        // S'il y a des erreurs
+                        if ( _regex($formDataArray[$inputName], $validationRule) ) 
+                        {
+                            // Remplir le tableau des erreurs avec les messages d'erreurs correspondant prévus.
+                            $errors[$inputName][] = $messageValue;
+                            
+                        }                        
+                    }                           
+                    // Si le nom de la règle de validation est "same" et que son message personnalisé existe 
+                    else if ( substr($validationRule, 0 ,4) === "same" && ($messageKey === "$inputName.same") ) 
+                    {
+                        // Procéder à la validation
+                        // S'il y a des erreurs
+                        if ( _same($formDataArray[$inputName], $validationRule, $formDataArray) ) 
+                        {
+                            // Remplir le tableau des erreurs avec les messages d'erreurs correspondant prévus.
+                            $errors[$inputName][] = $messageValue;
+                            
+                        }                        
+                    }                           
                 }
                 
             }
@@ -84,6 +132,93 @@ declare(strict_types=1);
         return $errors;
     }
 
+
+
+    function getOldValues(array $data) : array
+    {
+        return xssProtection($data);
+    }
+
+
+    function _same(string $value, string $validationRule, array $formDataArray) : bool
+    {
+        $tab = explode(':', $validationRule);
+        $key = $tab[1];
+        $value_to_compare = $formDataArray[$key];
+
+        if ( $value === $value_to_compare)
+        {
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
+     * Cette fonction du validateur lui permet de vérifier si la valeur envoyée par l'utilisateur correspond à l'expression régulière prévue.
+     *
+     * @param string $value
+     * @param string $validationRule
+     * @return boolean
+     */
+    function _regex(string $value, string $validationRule) : bool
+    {
+        $tab = explode(':', $validationRule);
+        $pattern = $tab[1];
+
+        if (preg_match($pattern, $value)) 
+        {
+            return false;
+        }
+        return true;
+    }
+
+
+    /**
+     * Cette fonction du validateur lui permet de vérifier si la valeur envoyée par l'utilisateur existe déjà dans la table de la base de données ou non.
+     *
+     * @param string $value
+     * @param string $validationRule
+     * @return boolean
+     */
+    function _unique(string $value, string $validationRule) : bool
+    {
+        $tab = explode(':', $validationRule);
+        $tab = explode(',', $tab[1]);
+
+        $table = $tab[0];
+        $column = $tab[1];
+        
+
+        require DB;
+
+        $req = $db->prepare("SELECT * FROM {$table} WHERE {$column}=:{$column} LIMIT 1");
+        $req->bindValue(":{$column}", $value);
+        $req->execute();
+
+        if( $req->rowCount() == 1 )
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+
+    /**
+     * Cette fonction du validateur lui permet de vérifire si la valeur est un email valide ou non.
+     *
+     * @param string $value
+     * @return boolean
+     */
+    function  _email(string $value) : bool
+    {
+        if ( filter_var($value, FILTER_VALIDATE_EMAIL)) 
+        {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * Cette fonction du validateur lui permet de vérifier si la longueur de la chaine de caractère à vérifier ne soit pas inférieur à la longueur minimale prévue.

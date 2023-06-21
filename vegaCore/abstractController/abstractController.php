@@ -110,3 +110,68 @@ declare(strict_types=1);
     {
         var_dump($data);
     }
+
+
+    /**
+     * Cette fonction permet de rediriger automatiquement l'utilisateur vers la page de laquelle proviennent les informations
+     * Puis elle arrête l'exécution du script
+     *
+     * @return void
+     */
+    function redirectBack()
+    {
+        header("Location: $_SERVER[HTTP_REFERER]");
+    }
+
+
+
+    /**
+     * Cette fonction permet de retourner les messages d'erreurs de l'input du formulaire
+     *
+     * @param string $inputName
+     * @return string
+     */
+    function formErrors(string $inputName) : string
+    {
+        if ( isset($_SESSION['form_errors'][$inputName]) && !empty($_SESSION['form_errors'][$inputName])) 
+        {
+            $errorMessage = $_SESSION['form_errors'][$inputName];
+            unset($_SESSION['form_errors'][$inputName]);
+
+            foreach ($errorMessage as $error ) 
+            {
+                return $error;
+            }
+        }
+        return "";
+    }
+
+
+    /**
+     * Cette fonction permet de retourner la valeur du champs, tapée au clavier précédemment.
+     *
+     * @param string $inputName
+     * @return string
+     */
+    function old(string $inputName) : string
+    {
+        if ( isset($_SESSION['old'][$inputName]) && !empty($_SESSION['old'][$inputName])) 
+        {
+           $old = $_SESSION['old'][$inputName];
+           unset($_SESSION['old'][$inputName]);
+
+           return $old;
+        }
+        return "";
+    }
+
+    /**
+     *  Cette fonction permet d'effectuer une redirection vers l'url définie.
+     *
+     * @param string $uri
+     * @return void
+     */
+    function redirectToUrl(string $uri) 
+    {
+        header("location: $uri");
+    }

@@ -58,30 +58,36 @@ require ABSTRACT_CONTROLLER;
                 ]
             );
 
-            dd($errors);
-
             // Si le validateur dit qu'il y a des erreurs
-
+            if ( count($errors) > 0 ) 
+            {
                 // Sauvegarder les anciennes données en session
+                $_SESSION['old'] = getOldValues($_POST);
 
-                // Sauvagarder les messages erreurs
-
+                // Sauvagarder les messages d'erreurs en session
+                $_SESSION['form_errors'] = $errors;
+    
                 // Redirige l'utilisateur vers la page de laquelle proviennent les informations
                 // Arrêter l'exécution du script
+                return redirectBack();
+            }
 
             // Dans le cas contraire,
 
             // Appeler la manager de la table "user" (model)
+            require USER;
+
+            $cleanData = getOldValues($_POST);
 
             // Demander au manger d'insérer le nouvel utilisateur dans la table "user"
+            createUser($cleanData);
 
             // Généner le message flash attestant de la réussite de la requête
+            $_SESSION['success'] = "Votre compte a bien été créé, veuillez vous connecter.";
 
-            // Rediriger l'utilisateur vers la page de connexion 
-            
+            // Rediriger l'utilisateur vers la page de connexion             
             // Arrêter l'exécution du script
-
-
+            return redirectToUrl('/');
         }
         
         return render("pages/visitor/registration/register.html.php");

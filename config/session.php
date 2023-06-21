@@ -18,7 +18,10 @@
     session_set_cookie_params($sessionLifeTime);
 
     // activation de l'utilisation des sessions
-    session_start();
+    if ( session_status() == PHP_SESSION_NONE) 
+    {
+        session_start();
+    }
     
     // test pour voir si la modification a bien été changer 
     // echo ini_get("session.gc_maxlifetime") / 60;

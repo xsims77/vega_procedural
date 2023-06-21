@@ -1,0 +1,1 @@
+- Tester plus tard la règle de validation : <em>unique</em> lors de l'inscription
