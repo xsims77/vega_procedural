@@ -76,6 +76,12 @@ const DB = CONFIG . "/database.php";
 const USER = SRC . "/manager/user.php"; 
 
 
+/**
+ * Cette constante représente le raccouci permettant de charger l'agent de sécurité authentification
+ */
+const LOGIN_AUTHENTICATOR = SRC . "/security/loginAuthenticator.php"; 
+
+
 
 
 

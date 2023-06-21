@@ -7,7 +7,12 @@
 
     get("/login",       ["visitor/authentication/loginController", "login"]);
     post("/login",      ["visitor/authentication/loginController", "login"]);
+    
+    get("/logout",      ["visitor/authentication/loginController", "logout"]);
 
+
+
+    
     // get("/hello", ["testController", "toGreat"]);
 
     // get("/users",["userController", "index"]);

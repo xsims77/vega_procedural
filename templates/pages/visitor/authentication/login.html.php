@@ -20,6 +20,14 @@ HTML;
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-lg-5 mx-auto p-4 shadow bg-white">
+
+        <?php if(isset($_SESSION['bad_credentials']) && !empty($_SESSION['bad_credentials']) ) : ?>
+            <div class="alert alert-danger text-center" role="alert">
+                <?= $_SESSION['bad_credentials']; ?>
+            </div>
+            <?php unset($_SESSION['bad_credentials']); ?>
+        <?php endif ?>
+
             <form method="post">
                 <div class="mb-3">
                     <label for="email">Email</label>
