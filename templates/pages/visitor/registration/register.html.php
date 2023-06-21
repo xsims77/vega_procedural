@@ -1,5 +1,16 @@
 <?php $theme = "themes/baseVisitor.html.php";?>
 
+<?php 
+    $title = <<<HTML
+Inscription
+HTML;
+?>
+<?php 
+    $title = <<<HTML
+Inscrivez-vous!
+HTML;
+?>
+
 <h1 class="text-center my-3 display-5">Inscription</h1>
 
 <div class="container">

@@ -21,8 +21,8 @@ require ABSTRACT_CONTROLLER;
             $errors = makeValidation(
                 $_POST,
                 [
-                    "firstName" => ["required", "string", "max:255"],
-                    "lastName"  => ["required", "string", "max:255"],
+                    "firstName" => ["required", "string", "max:255", "regex:/^[a-zA-Z-_]+$/"],
+                    "lastName"  => ["required", "string", "max:255", "regex:/^[a-zA-Z-_]+$/"],
                     "email"     => ["required", "string", "max:255", "email", "unique:user,email"],
                     "password"  => ["required", "string", "min:12", "max:255", "regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/"],
                     "confirmPassword"  => ["required", "string", "min:12", "max:255", "regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/", "same:password"]
@@ -31,10 +31,12 @@ require ABSTRACT_CONTROLLER;
                     "firstName.required" => "Le prénom est obligatoire.",
                     "firstName.string"   => "Veuillez entrer une chaine de caractères.",
                     "firstName.max"      => "Le prénom ne doit pas dépasser 255 caractères.",
+                    "firstName.regex"    => "Le prénom ne doit pas contenir de chiffre.",
 
                     "lastName.required"  => "Le nom est obligatoire.",
                     "lastName.string"    => "Veuillez entrer une chaine de caractères.",
                     "lastName.max"       => "Le nom ne doit pas dépasser 255 caractères.",
+                    "lastName.regex"     => "Le nom ne doit pas contenir de chiffre.",
 
                     "email.required"     => "L'email est obligatoire.",
                     "email.string"       => "Veuillez entrer une chaine de caractères.",
