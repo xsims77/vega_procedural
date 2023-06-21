@@ -175,3 +175,10 @@ declare(strict_types=1);
     {
         header("location: $uri");
     }
+
+
+
+    function protect(string $data)
+    {
+        return htmlspecialchars(stripslashes($data));
+    }

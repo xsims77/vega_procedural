@@ -74,14 +74,18 @@ require ABSTRACT_CONTROLLER;
             $_SESSION['user'] = $response;
 
             // Rediriger vers la page d'accueil et arrêter l'exécution du script.
-            return redirectToUrl('/');
+            return redirectToUrl('/user/home');
 
         }
         return render("pages/visitor/authentication/login.html.php");
     }
 
 
-
+    /**
+     * Cette fonction permet de déconnecter l'utilisateur.
+     *
+     * @return void
+     */
     function logout()
     {
         if ( isset($_SESSION['user']) && !empty($_SESSION['user']) ) 

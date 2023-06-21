@@ -82,6 +82,12 @@ const USER = SRC . "/manager/user.php";
 const LOGIN_AUTHENTICATOR = SRC . "/security/loginAuthenticator.php"; 
 
 
+/**
+ * Cette constante représente le raccouci permettant de charger le Middleware d'authentification
+ */
+const AUTH_MIDDLEWARE = SRC . "/security/authMiddleware.php"; 
+
+
 
 
 

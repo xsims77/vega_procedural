@@ -28,6 +28,7 @@ declare(strict_types=1);
 
         //Récupérons les données de l'utilisateur en question 
         $user = $req->fetch();
+        
         $req->closeCursor();
 
         // Verifie si le mot de passe envoyé par l'utlisateur correspond à celui de l'utilisateur hashé dans la base de données.
